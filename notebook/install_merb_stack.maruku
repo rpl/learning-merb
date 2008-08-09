@@ -1,0 +1,23 @@
+Install Merb Stack from GIT repositories
+========================================
+
+The best source for a fresh merb stack are the git repositories.
+
+Before you can generate all the gem from the source code you have to install the
+main gem dependencies:
+
+    sudo gem install erubis json_pure rack mime-types
+
+Then you can clone all the repositories:
+
+    git clone git://github.com/sam/dm-more.git
+    git clone git://github.com/sam/dm-core.git...
+    git clone git://github.com/dchelimsky/rspec.git
+    git clone  git://github.com/wycats/merb-core.git
+    git clone  git://github.com/wycats/merb-more.git
+    git clone  git://github.com/wycats/merb-plugins.git
+    git clone git://github.com/sam/do.git
+    git clone  git://github.com/wycats/merb-extlib.git
+    git clone git://github.com/sam/extlib.git
+
+
