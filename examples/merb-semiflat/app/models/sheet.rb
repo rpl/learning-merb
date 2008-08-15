@@ -2,15 +2,16 @@ class Sheet
   include DataMapper::Resource
 
   property :id,         Integer, :serial => true
-  property :sha_id,	String
-  property :short_id,	String
-  property :summary,    String
-  property :body,       Text
-  property :author,	String
+  property :sha_id,	String, :nullable => false, :message => "non vuoto"
+  property :short_id,	String, :nullable => false
+  property :summary,    String, :nullable => false
+  property :body,       Text, :nullable => false
+  property :author,	String, :nullable => false
   property :created_on, DateTime
   property :opened_on,  DateTime
   property :closed_on,  DateTime
-  property :status,	String
+  ### :status => [ :new, :open, :closed ]
+  property :status,	String, :default => :new, :nullable => false
   property :substatus,  String
   property :references, Yaml
 

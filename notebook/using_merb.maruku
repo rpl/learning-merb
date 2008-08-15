@@ -1,0 +1,7 @@
+Using Merb
+==========
+
+* Bootloader e dependency
+* personalizzazione configurazione framework (flat, semiflat, classic)
+* NoMethodError each for nil:NilClass se una funzione non ritorna alcun valore
+* render e display (differenze)

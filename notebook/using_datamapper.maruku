@@ -6,3 +6,6 @@ Using DataMapper
 * problema lazy + single table inheritance + serializzazione
 
 * serializzazione e deserializzazione JSON e YAML
+
+* validazioni
+* messaggi personalizzati nelle validazioni
