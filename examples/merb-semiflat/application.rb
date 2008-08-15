@@ -14,6 +14,18 @@ class Foo < Merb::Controller
   
 end
 
+class Exceptions < Merb::Controller
+  def bad_request
+    "BADREQUEST"
+  end
+
+  def not_found
+    "NOTFOUND"
+  end
+
+end
+
+
 class Sheets < Merb::Controller
   provides :xml, :json, :yaml
 
@@ -29,13 +41,27 @@ class Sheets < Merb::Controller
   def show
     @sheet = Sheet.get!(params[:id])
     display @sheet
+  rescue DataMapper::ObjectNotFoundError
+    raise Merb::ControllerExceptions::NotFound
   end
 
   def new
   end
 
   def create
-    @sheet = Sheet.new
+    case params[:type]
+    when "incident":
+        @sheet = IncidentSheet.new
+    when "problem":
+        @sheet = ProblemSheet.new
+    when "change":
+        @sheet = ChangeSheet.new
+    when "task":
+        @sheet = TaskSheet.new
+    else #techsupport
+      @sheet = TechnicalSupportRequest.new
+    end
+
     
     case content_type
     when :json
