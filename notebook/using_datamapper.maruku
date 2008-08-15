@@ -1,0 +1,8 @@
+Using DataMapper
+================
+
+* configurazione
+* sintassi schema
+* problema lazy + single table inheritance + serializzazione
+
+* serializzazione e deserializzazione JSON e YAML
