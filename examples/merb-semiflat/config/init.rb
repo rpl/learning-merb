@@ -1,7 +1,7 @@
 # Move this to application.rb if you want it to be reloadable in dev mode.
 Merb::Router.prepare do |r|
   r.match('/').to(:controller => 'foo', :action => 'index')
-  r.match('/foo').to(:controller => 'foo', :action => 'foo')
+  r.resources :sheets
   r.default_routes
 end
 

@@ -10,6 +10,7 @@ Merb::Config[:framework] = {
 
 Merb::BootLoader.before_app_loads do
   dependency "dm-serializer"
+  dependency "dm-types"
 end
 
 Merb::BootLoader.after_app_loads do
