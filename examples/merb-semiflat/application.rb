@@ -22,7 +22,6 @@ class Exceptions < Merb::Controller
   def not_found
     "NOTFOUND"
   end
-
 end
 
 
@@ -66,7 +65,8 @@ class Sheets < Merb::Controller
     case content_type
     when :json
       #create by rest json
-      puts JSON
+      @sheet.from_json(params[:data])
+      display @sheet
     else
       #create by form
     end

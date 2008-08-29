@@ -1,2 +1,9 @@
-- @sheet.each do |i|
-  %p= i.sha_id
+!!! XML
+!!!
+%html
+  %head
+    %title ALCA ITILSheets Dashboard 0.1
+    %links
+  %body
+    @sheet.each do |i|
+      -    %p= i.sha_id
