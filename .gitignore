@@ -1,2 +1,4 @@
+log*
+.emacs*
 *~
 *.sqlite3
