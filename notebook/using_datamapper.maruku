@@ -63,7 +63,7 @@ In DataMapper a model is a class with included DataMapper::Resource module.
 <pre>
 class MyModel
   include DataMapper::Resource
-end, :lazy => false
+end
 </pre>
 
 ### property declaration
