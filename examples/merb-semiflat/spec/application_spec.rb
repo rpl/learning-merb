@@ -6,7 +6,7 @@ require 'merb-core'
 $LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__),'..')))
 require 'application'
 
-Merb.start_environment(:testing => true, :adapter => 'runner', :environment => ENV['MERB_ENV'] || 'test')
+# Merb.start_environment(:testing => true, :adapter => 'runner', :environment => ENV['MERB_ENV'] || 'test')
  
 Spec::Runner.configure do |config|
   config.include(Merb::Test::ViewHelper)
@@ -23,7 +23,7 @@ describe Sheets do
       Sheets.should_receive(:all)
       
       dispatch_to(Sheets, :index) do |controller|
-        controller.stub!(:display)
+        # controller.stub!(:display)
       end
       
     end
