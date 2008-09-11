@@ -10,7 +10,7 @@ class Recipes < Application
   def create
     @recipe = Recipe.new(:name => params[:name])
     @recipe.save
-    display @recipe  
+    display :success => true  
   end
 
 end

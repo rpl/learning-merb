@@ -50,7 +50,7 @@ Ext.onReady(function() {
 	    });
 
 	simple.on('actionfailed', function(){
-		myStore.reload();
+		//handle actionfailed event
 	    });
 
 	simple.render(document.body);
