@@ -42,8 +42,15 @@ Ext.onReady(function() {
 		text: 'Save',
 		handler: function(){
 		    simple.getForm().submit({url:'/recipes/create.json', waitMsg:'Saving Data...'});
-		    myStore.reload()
 		}
+	    });
+
+	simple.on('actioncomplete', function(){
+		myStore.reload();
+	    });
+
+	simple.on('actionfailed', function(){
+		myStore.reload();
 	    });
 
 	simple.render(document.body);
