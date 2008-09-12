@@ -1,8 +1,9 @@
 
 Ext.onReady(function() {
+	var currId = null
 	var myStore = new Ext.data.JsonStore({
 		url: '/recipes.json',
-		fields: ['name'],
+		fields: ['id', 'name'],
 		autoLoad: true
 	    });
 
@@ -16,12 +17,22 @@ Ext.onReady(function() {
 		title: 'Tutte le ricette',
 		width: 500,
 		autoHeight: true,
-		frame: true
+		frame: true,
+		sm: new Ext.grid.RowSelectionModel({
+	                singleSelect: true,
+	                listeners: {
+	                    rowselect: function(sm, row, rec) {
+	                        Ext.getCmp("recipe-form").getForm().loadRecord(rec);
+				currId = rec.data.id
+	                    }
+	                }
+		    })
 	    });
  
 	grid.getSelectionModel().selectFirstRow();
  
 	var simple = new Ext.FormPanel({
+		id: 'recipe-form',
 		labelWidth: 75, 
 		frame: true,
 		title: 'Nuova ricetta',
@@ -29,12 +40,7 @@ Ext.onReady(function() {
 		width: 350,
 		defaults: {width: 230},
 		defaultType: 'textfield',
-
-		items: [{
-			fieldLabel: 'Ricetta',
-			name: 'name',
-			allowBlank:false
-		    }],
+		items: [{fieldLabel: 'Ricetta', name: 'name', allowBlank:false}, {fieldLabel: 'id', name: 'id'}]
 
 	    });
 
@@ -42,6 +48,13 @@ Ext.onReady(function() {
 		text: 'Save',
 		handler: function(){
 		    simple.getForm().submit({url:'/recipes/create.json', waitMsg:'Saving Data...'});
+		}
+	    });
+
+	var update = simple.addButton({
+		text: 'Update',
+		handler: function(){
+		    simple.getForm().submit({url:'/recipes/update/'+currId+'.json', waitMsg:'Saving Data...'});
 		}
 	    });
 
