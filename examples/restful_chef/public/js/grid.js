@@ -20,8 +20,6 @@ Ext.onReady(function() {
 		frame: true,
 	    });
  
-	grid.getSelectionModel().selectFirstRow();
- 
 	var simple = new Ext.FormPanel({
 		id: 'recipe-form',
 		labelWidth: 75, 
@@ -34,6 +32,8 @@ Ext.onReady(function() {
 		items: [{fieldLabel: 'Ricetta', name: 'name', allowBlank: false}, {hideLabel: true, hidden: true, name: 'id'}]
 
 	    });
+
+	grid.getSelectionModel().selectFirstRow();
 
 	simple.addButton({
 		text: 'Create',
