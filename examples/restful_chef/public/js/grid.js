@@ -7,7 +7,7 @@ Ext.onReady(function() {
 		autoLoad: true
 	    });
 
-	var grid = new Ext.grid.GridPanel({
+	var grid = new Ext.ux.BindingGrid({
 		store: myStore,
 		columns: [{header: 'Nome', width: 120, sortable: true, dataIndex: 'name'}],
 		viewConfig: {
@@ -18,15 +18,6 @@ Ext.onReady(function() {
 		width: 500,
 		autoHeight: true,
 		frame: true,
-		sm: new Ext.grid.RowSelectionModel({
-	                singleSelect: true,
-	                listeners: {
-	                    rowselect: function(sm, row, rec) {
-	                        Ext.getCmp("recipe-form").getForm().loadRecord(rec);
-				currId = rec.data.id
-	                    }
-	                }
-		    })
 	    });
  
 	grid.getSelectionModel().selectFirstRow();
@@ -40,7 +31,7 @@ Ext.onReady(function() {
 		width: 500,
 		defaults: {width: 230},
 		defaultType: 'textfield',
-		items: [{fieldLabel: 'Ricetta', name: 'name', allowBlank:false}, {hideLabel: true, hidden: true, name: 'id'}]
+		items: [{fieldLabel: 'Ricetta', name: 'name', allowBlank: false}, {hideLabel: true, hidden: true, name: 'id'}]
 
 	    });
 
