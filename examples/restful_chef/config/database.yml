@@ -18,7 +18,7 @@ development: &defaults
 
 test:
   <<:       *defaults
-  database: chef_test
+  database: db/chef_test.sqlite3
 
   # repositories:
   #   repo1:
@@ -26,7 +26,7 @@ test:
 
 production:
   <<:       *defaults
-  database: chef_production
+  database: db/chef_production.sqlite3
 
   # repositories:
   #   repo1:

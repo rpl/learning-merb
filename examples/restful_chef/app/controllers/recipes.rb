@@ -19,4 +19,10 @@ class Recipes < Application
     display :success => true
   end
 
+  def delete
+    @recipe = Recipe.get!(params[:id])
+    @recipe.destroy
+    display :success => true
+  end
+
 end

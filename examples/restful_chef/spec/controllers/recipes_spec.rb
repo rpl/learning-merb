@@ -57,3 +57,16 @@ describe Recipes, 'update action' do
   end
 
 end
+
+describe Recipes, 'delete action' do
+
+  it 'should delete the given record' do
+    @recipe = mock('recipe')
+    Recipe.should_receive(:get!).with('1').and_return(@recipe)
+    @recipe.should_receive(:destroy)
+    dispatch_to(Recipes, :delete, :id => '1') do |controller|
+      controller.stub!(:display)
+    end
+  end
+
+end

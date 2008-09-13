@@ -37,24 +37,31 @@ Ext.onReady(function() {
 		frame: true,
 		title: 'Nuova ricetta',
 		bodyStyle:'padding:5px 5px 0',
-		width: 350,
+		width: 500,
 		defaults: {width: 230},
 		defaultType: 'textfield',
-		items: [{fieldLabel: 'Ricetta', name: 'name', allowBlank:false}, {fieldLabel: 'id', name: 'id'}]
+		items: [{fieldLabel: 'Ricetta', name: 'name', allowBlank:false}, {hideLabel: true, hidden: true, name: 'id'}]
 
 	    });
 
-	var submit = simple.addButton({
-		text: 'Save',
+	simple.addButton({
+		text: 'Create',
 		handler: function(){
-		    simple.getForm().submit({url:'/recipes/create.json', waitMsg:'Saving Data...'});
+		    simple.getForm().submit({url:'/recipes/create.json', waitMsg:'Creating new item ...'});
 		}
 	    });
 
-	var update = simple.addButton({
+	simple.addButton({
 		text: 'Update',
 		handler: function(){
-		    simple.getForm().submit({url:'/recipes/update/'+currId+'.json', waitMsg:'Saving Data...'});
+		    simple.getForm().submit({url:'/recipes/update/'+currId+'.json', waitMsg:'Updating item ...'});
+		}
+	    });
+
+	simple.addButton({
+		text: 'Delete',
+		handler: function(){
+		    simple.getForm().submit({url:'/recipes/delete/'+currId+'.json', waitMsg:'Deleting item ...'});
 		}
 	    });
 
