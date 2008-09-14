@@ -7,7 +7,12 @@ Ext.onReady(function() {
 		  autoLoad: true
   });
 
-  var grid = new Ext.ux.GridFormBinding({ds: myStore, title: 'Ricette'});
+  var grid = new Ext.ux.GridFormBinding({
+					  ds: myStore,
+					  title: 'Ricette',
+					  formTitle: 'Dettagli ricetta',
+					  gridTitle: 'Tutte le ricette'
+					});
 
   grid.render(document.body);
 

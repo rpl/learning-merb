@@ -1,9 +1,14 @@
 Ext.ux.GridFormBinding = Ext.extend(Ext.Panel, {
 
+  // Prototype default configuration.
+  title: 'GridFormBinding container',
+  formTitle: 'GridFormBinding form',
+  gridTitle: 'GridFormBinding grid',
+
   initComponent: function() {
 
-    // Apply prototype(?) configuration.
-    Ext.apply(this,{
+    // Apply configuration.
+    Ext.apply(this, {
 		    frame: true,
 		    labelAlign: 'left',
 		    bodyStyle: 'padding:5px',
@@ -28,7 +33,7 @@ Ext.ux.GridFormBinding = Ext.extend(Ext.Panel, {
 		 xtype: 'grid',
 		 id: 'grid',
 		 ds: this.ds,
-		 title: 'Tutte le ricette',
+		 title: this.gridTitle,
 		 width: 500,
 		 height: 200,
 		 columns: [{header: 'Nome', width: 120, sortable: true, dataIndex: 'name'}],
@@ -64,7 +69,7 @@ Ext.ux.GridFormBinding = Ext.extend(Ext.Panel, {
 			    id: 'form',
 			    labelWidth: 75,
 			    frame: true,
-			    title: 'Nuova ricetta',
+			    title: this.formTitle,
 			    bodyStyle:'padding:5px',
 			    width: 500,
 			    defaults: {width: 230},
