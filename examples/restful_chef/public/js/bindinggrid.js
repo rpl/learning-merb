@@ -1,6 +1,6 @@
 Ext.ux.GridFormBinding = Ext.extend(Ext.Panel, {
 
-  initComponent: function(config) {
+  initComponent: function() {
 
     // Apply configuration.
 
@@ -14,7 +14,7 @@ Ext.ux.GridFormBinding = Ext.extend(Ext.Panel, {
 
     // Call superclass constructor.
 
-    Ext.ux.GridFormBinding.superclass.initComponent.call(this, config);
+    Ext.ux.GridFormBinding.superclass.initComponent.call(this, arguments);
 
     // Add the form component in the panel and configure it.
 
@@ -95,6 +95,12 @@ Ext.ux.GridFormBinding = Ext.extend(Ext.Panel, {
 	       sm: rsModel
     });
 
+  },
+
+  // Definition of a public method for the component.
+
+  aMethod: function() {
+    return "A public method.";
   }
 
 });
