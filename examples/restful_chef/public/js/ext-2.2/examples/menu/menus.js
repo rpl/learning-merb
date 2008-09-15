@@ -86,7 +86,7 @@ Ext.onReady(function(){
             text:'Button w/ Menu',
             iconCls: 'bmenu',  // <-- icon
             menu: menu  // assign menu by instance
-        }, 
+        },
         new Ext.Toolbar.MenuButton({
             text: 'Split Button',
             handler: onButtonClick,
