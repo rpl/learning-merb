@@ -7,14 +7,19 @@ Ext.onReady(function() {
 		  autoLoad: true
   });
 
+  var sm = new Ext.grid.CheckboxSelectionModel();
+
   var grid = new Ext.ux.GridFormBinding({
 					  store: myStore,
 					  title: 'Ricette',
 					  width: 400,
 					  height: 400,
-					  autoExpandColumn: '1',
+					  autoExpandColumn: '2',
 					  stripeRows: true,
-					  columns: [{header: 'Id', sortable: true, dataIndex: 'id'}, {header: 'Nome', sortable: true, dataIndex: 'name'}],
+					  sm: sm,
+					  cm: new Ext.grid.ColumnModel([sm,
+									{header: 'Id', sortable: true, dataIndex: 'id'},
+									{header: 'Nome', sortable: true, dataIndex: 'name'}]),
 					  form: {
 					    title: 'Dettagli Ricetta',
 					    frame: true,

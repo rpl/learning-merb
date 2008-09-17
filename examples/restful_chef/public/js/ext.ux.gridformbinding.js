@@ -5,34 +5,27 @@ Ext.ux.GridFormBinding = Ext.extend(Ext.grid.GridPanel, {
     // Apply configuration.
     Ext.apply(this, {
 		tbar: [{text: 'New'}, {text: 'Delete'}],
-		id: 'grid',
-		sm: rsModel.call(this)
+		id: 'grid'
 	      });
 
     // Call superclass constructor.
     Ext.ux.GridFormBinding.superclass.initComponent.call(this, arguments);
 
     initForm.call(this);
+    addSelectionEvents.call(this);
 
     // private methods
 
-    // Instantiate a RowSelectionModel object and attach to it a rowselect event.
-    function rsModel() {
+    // Load selected record in the form field when a rowselect
+    // event is triggered.
+    function addSelectionEvents() {
+      this.selModel.addListener('rowselect',
+    				function(sm, row, rec) {
+    				  Ext.getCmp("form").getForm().loadRecord(rec);
+    	    			  this.currId = rec.data.id;
+    				},
+    				this);
 
-      // The currently selected id.
-      var currId;
-
-      // Create a RowSelectionModel object.
-      var rsModel = new Ext.grid.RowSelectionModel({singleSelect: true});
-
-      // Load record data in the form's fields when a 'rowselect' event occurs.
-      rsModel.addListener('rowselect',
-			  function(sm, row, rec) {
-			    Ext.getCmp("form").getForm().loadRecord(rec);
-	    		    this.currId = rec.data.id;
-			  },
-			  this);
-      return rsModel;
     }
 
     // Add the form component into the panel and configure it.
