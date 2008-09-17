@@ -1,38 +1,20 @@
-Ext.ux.GridFormBinding = Ext.extend(Ext.Panel, {
-
-  // Prototype default configuration.
-  title: 'GridFormBinding container',
+Ext.ux.GridFormBinding = Ext.extend(Ext.grid.GridPanel, {
 
   initComponent: function() {
 
     // Apply configuration.
     Ext.apply(this, {
-		frame: true,
-		tbar: [{text: 'New'}, {text: 'Delete'}]
-
-    });
+		tbar: [{text: 'New'}, {text: 'Delete'}],
+		id: 'grid',
+		sm: rsModel.call(this)
+	      });
 
     // Call superclass constructor.
     Ext.ux.GridFormBinding.superclass.initComponent.call(this, arguments);
 
     initForm.call(this);
-    initGrid.call(this);
 
     // private methods
-
-    // Add the grid component into the panel and configure it.
-    function initGrid() {
-      this.add(Ext.apply({
-			   xtype: 'grid',
-			   id: 'grid',
-			   ds: this.ds,
-			   sm: rsModel.call(this),
-			   style: {
-			     margin: '20px'
-			   }
-			 },
-			 this.grid));
-    }
 
     // Instantiate a RowSelectionModel object and attach to it a rowselect event.
     function rsModel() {
@@ -59,9 +41,12 @@ Ext.ux.GridFormBinding = Ext.extend(Ext.Panel, {
       this.form = this.add(Ext.apply({
 				       xtype: 'form',
 				       id: 'form',
-				       style: {
-					 margin: '20px'
-				       }
+				       bodyStyle: {
+					 border: 0,
+					 padding: '10px 0 10px 0'
+				       },
+				       collapsible: true,
+				       titleCollapse: true
 				     },
 				     this.form));
 
@@ -95,26 +80,19 @@ Ext.ux.GridFormBinding = Ext.extend(Ext.Panel, {
     function attachReload() {
 
       // Code block used to reloading datastore.
-      // The block is called in the scope of this.
+      // The block is called in the scope of this.store
       var dsReload = function() {
 	this.reload();
       };
 
       // Attach dsReload to actioncomplete event.
 
-      this.form.on('actioncomplete', dsReload.createDelegate(this.ds));
+      this.form.on('actioncomplete', dsReload.createDelegate(this.store));
 
       // Handle actionfailed event.
       this.form.on('actionfailed', function() {  });
     }
 
-  },
-
-  // Definition of a public method for the component.
-  // But how to get access to component properties?
-
-  aMethod: function() {
-    alert('Public method.');
   }
 
 });
