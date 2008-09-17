@@ -13,13 +13,14 @@ Ext.onReady(function() {
 					  store: myStore,
 					  title: 'Ricette',
 					  width: 400,
-					  height: 400,
 					  autoExpandColumn: '2',
 					  stripeRows: true,
 					  sm: sm,
-					  cm: new Ext.grid.ColumnModel([sm,
-									{header: 'Id', sortable: true, dataIndex: 'id'},
-									{header: 'Nome', sortable: true, dataIndex: 'name'}]),
+					  columns: [
+					    sm,
+					    {header: 'Id', sortable: true, dataIndex: 'id'},
+					    {header: 'Nome', sortable: true, dataIndex: 'name'}
+					  ],
 					  form: {
 					    title: 'Dettagli Ricetta',
 					    frame: true,
