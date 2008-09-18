@@ -1,11 +1,10 @@
 Ext.ux.GridFormBinding = Ext.extend(Ext.Panel, {
-
   initComponent: function() {
-
     // Apply configuration
-    var grid_def = Ext.apply(this,
+    var grid_def = Ext.apply(this.subgrid,
       {
 	xtype: 'grid',
+	height: 400,
 	sm: new Ext.grid.RowSelectionModel({
 	  listeners: {
 	    rowselect: function(sm, row, rec) {
@@ -16,7 +15,7 @@ Ext.ux.GridFormBinding = Ext.extend(Ext.Panel, {
 	})
       });
 
-    var form_def = Ext.apply(this.form,
+    var form_def = Ext.apply(this.subform,
       {
 	  xtype: 'form',
 	  id: 'form',
@@ -63,7 +62,8 @@ Ext.ux.GridFormBinding = Ext.extend(Ext.Panel, {
     Ext.apply(this, {
       tbar: [{text: 'New'}, {text: 'Delete'}],
       id: 'gridpanel',
-      items: [internal_form,internal_grid]
+      items: [internal_form,internal_grid],
+      width: 600
     });
 
     // Call superclass constructor.
